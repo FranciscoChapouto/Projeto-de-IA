@@ -46,8 +46,8 @@ class Board:
         self.board = board
         
 
-    def printBoard(self):
-        print(self.board)
+    def __str__(self):
+        return self.board
 
     def adjacent_cell(self, cell:tuple) -> list:
         """Devolve uma lista das células que fazem
@@ -70,12 +70,6 @@ class Board:
     def parse_instance():
         """Lê o test do standard input (stdin) que é passado como argumento
         e retorna uma instância da classe Board.
-
-        Por exemplo:
-            $ python3 pipe.py < test-01.txt
-
-            > from sys import stdin
-            > line = stdin.readline().split()
         """
 
         # Lê linhas não vazias e coloca numa lista
@@ -124,7 +118,7 @@ class Slitherlink(Problem):
 
 if __name__ == "__main__":
     board = Board.parse_instance()
-    board.printBoard()
+    print(board)
 
     # TODO:
     # Ler o ficheiro do standard input,
