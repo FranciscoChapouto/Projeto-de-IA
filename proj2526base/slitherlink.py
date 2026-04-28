@@ -42,6 +42,13 @@ class SlitherlinkState:
 class Board:
     """Representação interna de um tabuleiro de Slitherlink."""
 
+    def __init__(self, board):
+        self.board = board
+        
+
+    def printBoard(self):
+        print(self.board)
+
     def adjacent_cell(self, cell:tuple) -> list:
         """Devolve uma lista das células que fazem
         fronteira com a célula enviada no argumento"""
@@ -70,8 +77,13 @@ class Board:
             > from sys import stdin
             > line = stdin.readline().split()
         """
-        # TODO
-        pass
+
+        # Lê linhas não vazias e coloca numa lista
+        raw_board = [line.split() for line in stdin if line.strip()]
+
+        board = np.array(raw_board)
+
+        return Board(board)
 
     # TODO: outros metodos da classe
 
@@ -108,9 +120,12 @@ class Slitherlink(Problem):
         """Função heuristica utilizada para a procura A*."""
         # TODO
         pass
-        
+
 
 if __name__ == "__main__":
+    board = Board.parse_instance()
+    board.printBoard()
+
     # TODO:
     # Ler o ficheiro do standard input,
     # Usar uma técnica de procura para resolver a instância,
