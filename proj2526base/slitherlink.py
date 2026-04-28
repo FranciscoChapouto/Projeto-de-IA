@@ -3,9 +3,9 @@
 # Devem alterar as classes e funções neste ficheiro de acordo com as instruções do enunciado.
 # Além das funções e classes sugeridas, podem acrescentar outras que considerem pertinentes.
 
-# Grupo 00:
-# 00000 Nome1
-# 00000 Nome2
+# Grupo 93:
+# 113401 Afonso Mendes
+# 114685 Francisco Chapouto
 
 import random, copy
 from sys import stdin
@@ -108,9 +108,7 @@ class Slitherlink(Problem):
         """Função heuristica utilizada para a procura A*."""
         # TODO
         pass
-
-    
-
+        
 
 if __name__ == "__main__":
     # TODO:
