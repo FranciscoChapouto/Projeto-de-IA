@@ -68,8 +68,10 @@ class Board:
 
     def get_cell_edges(self, row:int, column:int) -> list:
         """Devolve os arestas da célula enviada no argumento"""
-        #TODO
-        pass
+        
+        edges = [(row - 1, column),(row + 1, column), (row, column - 1), (row, column + 1)]
+
+        return [self.board[r,c] for r, c in edges]
 
     def get_active_edges(self, row:int, column:int) -> list:
         """Devolve o número de arestas ativas"""
