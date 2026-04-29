@@ -49,11 +49,22 @@ class Board:
     def __str__(self):
         return str(self.board)
 
+    def get_cell_value(self, cell: tuple) -> tuple:
+        return self.board[(cell[0] * 2 + 1), (cell[1] * 2 + 1)]
+
     def adjacent_cell(self, cell:tuple) -> list:
         """Devolve uma lista das células que fazem
         fronteira com a célula enviada no argumento"""
-        #TODO
-        pass
+        
+        adj_cells = list()
+
+        if cell[0] - 1 > 0:
+            adj_cells.append((cell[0] - 1, cell[1]))
+            if cell[1] - 1 > 0:
+                adj_cells.append((cell[0] - 1, cell[1] - 1))
+                adj_cells.append((cell[0], cell[1] - 1))
+
+
 
     def get_cell_edges(self, row:int, column:int) -> list:
         """Devolve os arestas da célula enviada no argumento"""
@@ -72,8 +83,6 @@ class Board:
         e retorna uma instância da classe Board.
         """
 
-        # Lê linhas não vazias e coloca numa lista
-        # raw_board = [line.split() for line in stdin if line.strip()]
         raw_board = []
         
         for line in stdin:
@@ -135,6 +144,7 @@ class Slitherlink(Problem):
 if __name__ == "__main__":
     board = Board.parse_instance()
     print(board)
+
 
     # TODO:
     # Ler o ficheiro do standard input,
