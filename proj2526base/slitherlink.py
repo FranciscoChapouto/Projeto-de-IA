@@ -47,7 +47,7 @@ class Board:
         
 
     def __str__(self):
-        return self.board
+        return str(self.board)
 
     def adjacent_cell(self, cell:tuple) -> list:
         """Devolve uma lista das células que fazem
@@ -80,21 +80,17 @@ class Board:
 
             edge_line = ['i'] * (2 * len(line.split()) + 1)
             raw_board.append(edge_line)
-            
+
             content_line = []
             
             for char in line.split():
                 content_line.append('i')
                 content_line.append(char)
             content_line.append('i')
-        raw_board.append(content_line)
+            raw_board.append(content_line)
 
             
-            #edges = list('i' * (2 * len(line)))
-
-            #raw_board.append(edges)
-            #raw_board.append(line.strip())
-
+        raw_board.append(edge_line)
         board = np.array(raw_board)
 
         return Board(board)
