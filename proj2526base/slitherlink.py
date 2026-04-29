@@ -87,12 +87,9 @@ class Board:
                 content_line.append('i')
                 content_line.append(char)
             content_line.append('i')
-            raw_board.append(content_line)
+        raw_board.append(content_line)
 
-            if line:
-                last_edge_line = ['i'] * (2 * len(line[0].split()) + 1)
-                
-                raw_board.append(last_edge_line)
+            
             #edges = list('i' * (2 * len(line)))
 
             #raw_board.append(edges)
