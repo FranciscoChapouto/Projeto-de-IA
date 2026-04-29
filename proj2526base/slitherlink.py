@@ -73,7 +73,30 @@ class Board:
         """
 
         # Lê linhas não vazias e coloca numa lista
-        raw_board = [line.split() for line in stdin if line.strip()]
+        # raw_board = [line.split() for line in stdin if line.strip()]
+        raw_board = []
+        
+        for line in stdin:
+
+            edge_line = ['i'] * (2 * len(line.split()) + 1)
+            raw_board.append(edge_line)
+            
+            content_line = []
+            
+            for char in line.split():
+                content_line.append('i')
+                content_line.append(char)
+            content_line.append('i')
+            raw_board.append(content_line)
+
+            if line:
+                last_edge_line = ['i'] * (2 * len(line[0].split()) + 1)
+                
+                raw_board.append(last_edge_line)
+            #edges = list('i' * (2 * len(line)))
+
+            #raw_board.append(edges)
+            #raw_board.append(line.strip())
 
         board = np.array(raw_board)
 
