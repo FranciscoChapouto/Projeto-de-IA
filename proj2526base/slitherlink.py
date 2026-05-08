@@ -50,21 +50,35 @@ class Board:
         return str(self.board)
 
     def get_cell_value(self, cell: tuple) -> tuple:
-        return self.board[(cell[0] * 2 + 1), (cell[1] * 2 + 1)]
+        try:
+            value = self.board[(cell[0] * 2 + 1), (cell[1] * 2 + 1)]
+            if cell[0] < 0 or cell[1] < 0 or value == 'i':
+                raise IndexError("Cell out of bounds")
+                
+            return value
+        except:
+            raise IndexError("Cell out of bounds")
 
     def adjacent_cell(self, cell:tuple) -> list:
         """Devolve uma lista das células que fazem
         fronteira com a célula enviada no argumento"""
-        
         adj_cells = list()
 
-        if cell[0] - 1 > 0:
-            adj_cells.append((cell[0] - 1, cell[1]))
-            if cell[1] - 1 > 0:
-                adj_cells.append((cell[0] - 1, cell[1] - 1))
-                adj_cells.append((cell[0], cell[1] - 1))
-
-
+        for i in [-1, 1]:
+            try:
+                adj_cell = (cell[0] + i, cell[1])
+                self.get_cell_value(adj_cell)
+                adj_cells.append(adj_cell)
+            except IndexError:
+                pass
+            try:
+                adj_cell = (cell[0], cell[1] + i)
+                self.get_cell_value(adj_cell)
+                adj_cells.append(adj_cell)
+            except IndexError:
+                continue
+        
+        return adj_cells
 
     def get_cell_edges(self, row:int, column:int) -> list:
         """Devolve os arestas da célula enviada no argumento"""
@@ -146,6 +160,12 @@ class Slitherlink(Problem):
 if __name__ == "__main__":
     board = Board.parse_instance()
     print(board)
+
+    print('\n')
+
+    print(board.adjacent_cell((0,0)), "\n")
+
+
 
 
     # TODO:
